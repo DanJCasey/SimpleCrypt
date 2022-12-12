@@ -1,4 +1,9 @@
+package Crypto.test;
+
+import Crypto.main.src.cipher.ROT13;
 import org.junit.Test;
+
+import java.io.FileNotFoundException;
 
 import static org.junit.Assert.*;
 
@@ -12,8 +17,8 @@ public class ROT13Test {
         String s2 = "ABCDEF";
 
         // When
-        ROT13 cipher = new ROT13();
-        String actual = cipher.rotate(s1, 'A');
+
+        String actual = ROT13.rotate(s1, 'A');
 
         // Then
         assertTrue(actual.equals(s2));
@@ -26,8 +31,7 @@ public class ROT13Test {
         String s2 = "DEFABC";
 
         // When
-        ROT13 cipher = new ROT13();
-        String actual = cipher.rotate(s1, 'D');
+        String actual = ROT13.rotate(s1, 'D');
 
         // Then
         assertTrue(actual.equals(s2));
@@ -40,8 +44,7 @@ public class ROT13Test {
         String s2 = "NOPQRSTUVWXYZABCDEFGHIJKLM";
 
         // When
-        ROT13 cipher = new ROT13();
-        String actual = cipher.rotate(s1, 'N');
+        String actual = ROT13.rotate(s1, 'N');
         System.out.println(s1);
         System.out.println(actual);
         // Then
@@ -49,7 +52,7 @@ public class ROT13Test {
     }
 
     @Test
-    public void cryptTest1() {
+    public void cryptTest1()  {
         // Given
         ROT13 cipher = new ROT13('a', 'n');
 
@@ -60,14 +63,14 @@ public class ROT13Test {
         String A2 = "To get to the other side!";
 
         // When
-        String actual = cipher.encrypt(Q1);
+        String actual = cipher.crypt(Q1);
         System.out.println(Q1);
         System.out.println(A1);
         // Then
         assertTrue(actual.equals(A1));
 
         // When
-        String actual2 = cipher.decrypt(Q2);
+        String actual2 = cipher.crypt(Q2);
         System.out.println(Q2);
         System.out.println(A2);
         // Then
